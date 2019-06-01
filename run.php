@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 function cek($email){
 $ch = curl_init();
 
