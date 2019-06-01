@@ -25,9 +25,9 @@ $result = curl_exec($ch);
 $json = json_decode($result, true);
 //print_r($json);
 if(preg_match("/IDENTIFIER_EXISTS/", $result)){
-    return "Email Hidup!";
+    return "Exist";
 }else{
-    return "Email Mati!";
+    return "Available";
 }
 }
 function save($filename, $content)
@@ -37,8 +37,10 @@ function save($filename, $content)
 	    fclose($save);
 	}
 	
-##EDIT TOKENNYA##
-$token = "EAAA";
+echo "Enter Your Token: ";
+	// echo "Enter Number: ";
+	//$otp = trim(fgets(STDIN));
+$token = trim(fgets(STDIN));
 ##EDIT TOKENNYA##
 
 
@@ -55,12 +57,15 @@ $email = $json1->email;
 $comp = $name."|".$email;
 $em = explode("@", $email);
 if($email != NULL){
+if(preg_match("/yahoo.com/", $email)){
+$yahu = cek($em[0]);
+echo $comp."|".$yahu."\n";
+save("hasilcekyahoo.txt", $comp."|".$yahu);
+}else{
 echo $comp."\n";
 save("hasilgrabemail.txt", $comp);
 }
-if(preg_match("/yahoo.com/", $email)){
-//echo $comp."\n";
-save("hasilcekyahoo.txt", $comp."|".cek($em[0]));
-}
+
 }
 
+}
