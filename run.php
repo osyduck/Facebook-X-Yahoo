@@ -25,9 +25,9 @@ $result = curl_exec($ch);
 $json = json_decode($result, true);
 //print_r($json);
 if(preg_match("/IDENTIFIER_EXISTS/", $result)){
-    return "Exist";
+    return "Email Hidup!";
 }else{
-    return "Available";
+    return "Email Mati!";
 }
 }
 function save($filename, $content)
