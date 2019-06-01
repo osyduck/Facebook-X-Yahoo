@@ -52,8 +52,8 @@ $data = $json1->data;
 for($i=0; $i<count($data); $i++){
 $info = file_get_contents("https://graph.facebook.com/".$data[$i]->id."?access_token=".$token);
 $json1 = json_decode($info);
-$name = $json1->name;
-$email = $json1->email;
+$name = @$json1->name;
+$email = @$json1->email;
 $comp = $name."|".$email;
 $em = explode("@", $email);
 if($email != NULL){
